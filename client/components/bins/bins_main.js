@@ -1,13 +1,24 @@
 import React, { Component } from 'react';
+import { withTracker } from 'meteor/react-meteor-data';
+
+import { Bins } from '../../../imports/api/bins';
+import BinsEditor from './bins_editor';
 
 class BinsMain extends Component {
   render() {
-    const { binId } = this.props.match.params;
+    if (!this.props.bin) { return <div>Loading...</div> }
 
     return (
-      <div>BinsMain</div>
+      <div>
+        <BinsEditor bin={this.props.bin}/>
+      </div>
     );
   }
 };
 
-export default BinsMain;
+export default withTracker((props) => {
+  const { binId } = props.match.params;
+  Meteor.subscribe('bins');
+
+  return { bin: Bins.findOne(binId) };
+})(BinsMain);

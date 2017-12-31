@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import App from './components/app';
 import { Bins } from '../imports/api/bins';
 
 const routes = (
   <BrowserRouter>
-    <Route path="/" component={App}>
-    </Route>
+    <App />
   </BrowserRouter>
 );
 

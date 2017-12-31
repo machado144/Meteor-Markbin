@@ -11,7 +11,7 @@ export default () => {
     <div>
       <Header />
       <Route exact path="/" component={BinsList} />
-      <Route path="/bins" component={BinsMain} />
+      <Route path="/bins/:binId" component={BinsMain} />
     </div>
   )
 };
